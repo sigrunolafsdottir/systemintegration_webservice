@@ -1,5 +1,9 @@
-package WebApplicationDemo;
+package WebApplicationDemo.Services;
 
+import WebApplicationDemo.Models.Response;
+import WebApplicationDemo.Repository.IBookDao;
+import WebApplicationDemo.Repository.BookDaoNonPersistent;
+import WebApplicationDemo.Models.Book;
 import java.util.ArrayList;
 import java.util.List; 
 import javax.ws.rs.GET; 
@@ -13,9 +17,9 @@ import javax.ws.rs.core.MediaType;
 @Path("/BookService") 
 
 public class BookService {  
-   //private static IBookDao bookDao = new BookDaoNonPersistent();
+   private static IBookDao bookDao = new BookDaoNonPersistent();
    // private static IBookDao bookDao = new BookDaoSerPersistent();
-   private static IBookDao bookDao = new BookDaoJSONPersistent();
+   //private static IBookDao bookDao = new BookDaoJSONPersistent();
     
     private static List<Book> bookList =  bookDao.getAllBooks(); 
    

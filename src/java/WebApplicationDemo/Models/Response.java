@@ -1,4 +1,4 @@
-package WebApplicationDemo;
+package WebApplicationDemo.Models;
 
 import java.io.Serializable;  
 import javax.xml.bind.annotation.XmlElement; 

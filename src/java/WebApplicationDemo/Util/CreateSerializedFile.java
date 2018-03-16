@@ -1,19 +1,17 @@
-package WebApplicationDemo;
+package WebApplicationDemo.Util;
 
-import com.google.gson.Gson;
-import java.io.FileWriter;
-import java.io.IOException;
+import WebApplicationDemo.Models.Book;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class CreateJSONFile {
+public class CreateSerializedFile {
 
-    Gson gson = new Gson();
+    SerializationManager sm = new SerializationManager();
     List<Book> bookList = new ArrayList<>(); 
     
     
-    CreateJSONFile(){
+    CreateSerializedFile(){
         
       Book b1 = new Book(1,"Wuthering Heights", "Emily Bronte");
       Book b2 = new Book(2, "Jayne Eyre", "Charlotte Bronte");
@@ -31,19 +29,12 @@ public class CreateJSONFile {
       bookList.add(b6);
       bookList.add(b7);
       
-      String json = gson.toJson(bookList);
-      
-      try (FileWriter writer = new FileWriter("src/java/WebApplicationDemo/allaBockerJSON.json");) {
-        writer.write(json);
-  
-      } catch (IOException e) {
-         e.printStackTrace();
-      }
+      sm.serializeList(bookList, "src/java/WebApplicationDemo/allaBocker.ser");
         
     }
 
 
     public static void main(String[] args) {
-        CreateJSONFile cr = new CreateJSONFile();
+        CreateSerializedFile c = new CreateSerializedFile();
     }
 }

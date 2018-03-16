@@ -1,5 +1,6 @@
-package WebApplicationDemo;
+package WebApplicationDemo.Util;
 
+import WebApplicationDemo.Models.Book;
 import java.util.ArrayList;
 import java.util.List;
 

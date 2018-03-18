@@ -6,7 +6,10 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -34,7 +37,8 @@ public class BookDaoDB {
                 int id = rs.getInt("id");
                 String title = rs.getString("title");
                 String author = rs.getString("author");
-                allBooks.add(new Book(id, title, author));
+                Date read = rs.getDate("read");
+                allBooks.add(new Book(id, title, author, read));
             }
         }
         catch (Exception e){

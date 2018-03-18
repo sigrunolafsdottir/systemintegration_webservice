@@ -1,6 +1,8 @@
 package WebApplicationDemo.Models;
 
 import java.io.Serializable;  
+import java.time.LocalDateTime;
+import java.util.Date;
 import javax.xml.bind.annotation.XmlElement; 
 import javax.xml.bind.annotation.XmlRootElement; 
 @XmlRootElement(name = "book") 
@@ -9,6 +11,7 @@ public class Book  implements Serializable{
     private static final long serialVersionUID = 1L;
     private String title;
     private String author;
+    private Date read;
     private int id;
     
     public Book(){}
@@ -17,6 +20,13 @@ public class Book  implements Serializable{
         this.id = id;
         this.title = title;
         this.author = author;
+    }
+    
+    public Book(int id, String title, String author, Date read){
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.read = read;
     }
     
     public int getId() { 
@@ -44,4 +54,13 @@ public class Book  implements Serializable{
     public void setAuthor(String author) {
         this.author = author;
     }
+    
+    public Date getRead() {
+        return read;
+    }
+   @XmlElement 
+    public void setRead(Date read) {
+        this.read = read;
+    }
 }
+    

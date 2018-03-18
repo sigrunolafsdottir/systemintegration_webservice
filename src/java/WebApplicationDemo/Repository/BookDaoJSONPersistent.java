@@ -15,7 +15,7 @@ import com.google.gson.reflect.TypeToken;
 public class BookDaoJSONPersistent implements IBookDao {
     
     Gson gson = new Gson();
-    String bookListPath = "C:/Users/s_ola/OneDrive/Dokument/NetBeansProjects/WebApplicationDemo/src/java/WebApplicationDemo/allaBockerJSON.json";
+    String bookListPath = "C:/Users/s_ola/OneDrive/Dokument/NetBeansProjects/WebApplicationDemo/src/java/WebApplicationDemo/Repository/allaBockerJSON.json";
     
     
     public List<Book> getAllBooks(){ 

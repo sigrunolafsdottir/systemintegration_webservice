@@ -17,8 +17,8 @@ import javax.ws.rs.core.MediaType;
 public class BookService {  
    //private static IBookDao bookDao = new BookDaoNonPersistent();
    // private static IBookDao bookDao = new BookDaoSerPersistent();
-   //private static IBookDao bookDao = new BookDaoJSONPersistent();
-    private static IBookDao bookDao = new BookDaoDB();
+   private static IBookDao bookDao = new BookDaoJSONPersistent();
+    
     
     private static List<Book> bookList =  bookDao.getAllBooks(); 
    
@@ -27,7 +27,7 @@ public class BookService {
    @Path("/books") 
    @Produces(MediaType.APPLICATION_XML) 
    public List<Book> getBooks(){ 
-      return bookList; 
+       return bookList; 
    }  
    
    @GET 
@@ -93,8 +93,9 @@ public class BookService {
             bookList.remove(indexToRemove);
             res.setStatus(Boolean.TRUE);
        }
-       bookDao.persistBooks(bookList);
-      return res;
+
+       bookDao.persistBooks(bookList);      
+       return res;
    } 
    
    @POST
@@ -128,7 +129,7 @@ public class BookService {
            bookList.set(indexToUpdate, b);
            res.setStatus(Boolean.TRUE);
        }
-       bookDao.persistBooks(bookList);
+        bookDao.persistBooks(bookList);
        return res;
    } 
    

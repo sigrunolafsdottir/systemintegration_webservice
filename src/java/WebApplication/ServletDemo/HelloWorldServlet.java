@@ -26,6 +26,13 @@ public class HelloWorldServlet extends HttpServlet{
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();  
       out.println("<HTML><HEAD><TITLE>"+ title + "</TITLE></HEAD><BODY><TABLE>");
-      out.println("<BODY><H1 align = \"center\">" + title + name+  "</H1></BODY></HTML>");
+      out.println("<BODY><H1 align = \"center\">" + title + name+  "</H1>");
+      out.println(this.getServletContext().getServerInfo() + "</BODY></HTML>");
+   } 
+   
+   public void doPost(HttpServletRequest request, 
+      HttpServletResponse response) throws ServletException, 
+      IOException{ 
+       doGet(request, response);
    } 
 }

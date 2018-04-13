@@ -4,6 +4,7 @@ import WebApplicationDemo.Models.*;
 import WebApplicationDemo.Repository.*;
 import java.util.ArrayList;
 import java.util.List; 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET; 
 import javax.ws.rs.POST;
 import javax.ws.rs.Path; 
@@ -101,7 +102,19 @@ public class BookService {
    
    @POST
    @Path("/book/add") 
+   @Produces(MediaType.APPLICATION_XML)
    public Response addBook(Book b){ 
+       Response res = new Response("Book added", Boolean.FALSE);
+       bookList.add(b);
+       res.setStatus(Boolean.TRUE);
+       bookDao.persistBooks(bookList);
+       return res;
+   } 
+
+   @POST
+   @Path("/book/add2") 
+   public Response addBook2(Book b){ 
+       System.out.println("addBook2");
        Response res = new Response("Book added", Boolean.FALSE);
        bookList.add(b);
        res.setStatus(Boolean.TRUE);

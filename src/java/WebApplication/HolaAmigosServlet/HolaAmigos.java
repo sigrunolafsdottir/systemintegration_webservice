@@ -1,4 +1,5 @@
-package WebApplication.ServletDemo;
+package WebApplication.HolaAmigosServlet;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -8,25 +9,32 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class HelloWorldServlet extends HttpServlet{
 
- private String title;
- private String name;
-
-    public void init() throws ServletException 
+public class HolaAmigos extends HttpServlet{
+    
+    DAO d = new DAO();
+    String title;
+    String name;
+    
+      public void init() throws ServletException 
     {              
-       title = "Välkommen ";  
+       title = "Välkommen till telefonboken";  
     }
-
-   public void doGet(HttpServletRequest request, 
+      
+    public void doGet(HttpServletRequest request, 
       HttpServletResponse response) throws ServletException, 
       IOException{ 
-       name = request.getParameter("first_name");
-       name += " " + request.getParameter("last_name");
+      name = request.getParameter("name");
+      String person = d.getPersonByNameAsString(name);
       response.setContentType("text/html");
       PrintWriter out = response.getWriter();  
       out.println("<HTML><HEAD><TITLE>"+ title + "</TITLE></HEAD>");
-      out.println("<BODY><H1 align = \"center\">" + title + name+  "</H1>");
+      if (person != null){
+        out.println("<BODY><H1 align = \"center\">" + person.toString()+  "</H1>");
+      }
+      else{
+        out.println("<BODY><H1 align = \"center\">" + " The person could not be found" +  "</H1>");
+      }
       out.println(this.getServletContext().getServerInfo() + "</BODY></HTML>");
    } 
    
@@ -35,4 +43,6 @@ public class HelloWorldServlet extends HttpServlet{
       IOException{ 
        doGet(request, response);
    } 
+ 
 }
+
